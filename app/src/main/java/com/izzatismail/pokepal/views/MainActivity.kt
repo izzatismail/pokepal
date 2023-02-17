@@ -1,7 +1,8 @@
-package com.izzatismail.pokepal
+package com.izzatismail.pokepal.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.izzatismail.pokepal.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
