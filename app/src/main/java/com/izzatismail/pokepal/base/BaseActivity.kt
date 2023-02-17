@@ -9,7 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.izzatismail.pokepal.R
 
-class BaseApplication: AppCompatActivity() {
+class BaseActivity: AppCompatActivity() {
 
     private var viewActionBar: View? = null
 
