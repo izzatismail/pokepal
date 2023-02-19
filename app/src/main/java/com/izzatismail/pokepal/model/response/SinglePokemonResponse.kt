@@ -1,6 +1,8 @@
-package com.izzatismail.pokepal.model
+package com.izzatismail.pokepal.model.response
 
 import android.os.Parcelable
+import com.izzatismail.pokepal.model.Sprites
+import com.izzatismail.pokepal.model.Stats
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

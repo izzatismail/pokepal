@@ -1,8 +1,8 @@
 package com.izzatismail.pokepal.network
 
-import com.izzatismail.pokepal.model.PokemonResponse
-import com.izzatismail.pokepal.model.ResultWrapper
-import com.izzatismail.pokepal.model.SinglePokemonResponse
+import com.izzatismail.pokepal.model.response.PokemonResponse
+import com.izzatismail.pokepal.model.response.ResultWrapper
+import com.izzatismail.pokepal.model.response.SinglePokemonResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

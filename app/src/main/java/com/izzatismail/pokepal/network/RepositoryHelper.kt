@@ -1,7 +1,7 @@
 package com.izzatismail.pokepal.network
 
 import android.util.Log
-import com.izzatismail.pokepal.model.ResultWrapper
+import com.izzatismail.pokepal.model.response.ResultWrapper
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.io.IOException

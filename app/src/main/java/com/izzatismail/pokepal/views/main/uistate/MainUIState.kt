@@ -1,6 +1,6 @@
 package com.izzatismail.pokepal.views.main.uistate
 
-import com.izzatismail.pokepal.model.PokemonResponse
+import com.izzatismail.pokepal.model.response.PokemonResponse
 
 sealed class MainUIState {
     object Empty: MainUIState()

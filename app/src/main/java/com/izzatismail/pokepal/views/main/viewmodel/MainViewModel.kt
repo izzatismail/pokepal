@@ -2,7 +2,7 @@ package com.izzatismail.pokepal.views.main.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.izzatismail.pokepal.base.BaseViewModel
-import com.izzatismail.pokepal.model.ResultWrapper
+import com.izzatismail.pokepal.model.response.ResultWrapper
 import com.izzatismail.pokepal.network.MainRepository
 import com.izzatismail.pokepal.utils.Constants
 import com.izzatismail.pokepal.views.main.uistate.MainUIState

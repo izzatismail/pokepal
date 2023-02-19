@@ -1,7 +1,7 @@
 package com.izzatismail.pokepal.network.api
 
-import com.izzatismail.pokepal.model.PokemonResponse
-import com.izzatismail.pokepal.model.SinglePokemonResponse
+import com.izzatismail.pokepal.model.response.PokemonResponse
+import com.izzatismail.pokepal.model.response.SinglePokemonResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,6 +1,4 @@
-package com.izzatismail.pokepal.model
-
-import com.izzatismail.pokepal.model.response.ApiErrorResponse
+package com.izzatismail.pokepal.model.response
 
 sealed class ResultWrapper<out T> {
     data class Success<out T>(val  value: T): ResultWrapper<T>()
