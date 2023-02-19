@@ -65,4 +65,7 @@ dependencies {
 
     //Carbon
     implementation 'tk.zielony:carbon:0.16.0.1'
+
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:3.2.0-beta-1"
 }

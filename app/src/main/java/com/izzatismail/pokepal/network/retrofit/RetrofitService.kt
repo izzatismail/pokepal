@@ -28,7 +28,7 @@ class RetrofitService {
             .addInterceptor(requestInterceptor)
             .build()
 
-        fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        fun provideRetrofit(): Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
