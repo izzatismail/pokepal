@@ -11,4 +11,12 @@ data class SinglePokemonResponse(
     val stats: List<Stats>,
     val height: Int,
     val weight: Int
-) : Parcelable
+) : Parcelable {
+    fun getFormattedHeight(): String {
+        return height.div(10.0).toString() + " metres"
+    }
+
+    fun getFormattedWeight(): String {
+        return weight.div(10.0).toString() + " kgs"
+    }
+}

@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+
     <dimen name="pokemon_image_height">100dp</dimen>
     <dimen name="card_side_margin">10dp</dimen>
-    <dimen name="card_bottom_margin">24dp</dimen>
+    <dimen name="card_bottom_margin">@dimen/space_24</dimen>
     <dimen name="card_elevation">4dp</dimen>
     <dimen name="card_corner_radius">12dp</dimen>
-    <dimen name="top_margin">24dp</dimen>
+    <dimen name="top_margin">@dimen/space_24</dimen>
+
+    <dimen name="text_8">8dp</dimen>
+    <dimen name="text_10">10dp</dimen>
+    <dimen name="text_12">12dp</dimen>
+    <dimen name="text_14">14dp</dimen>
+    <dimen name="text_16">16dp</dimen>
+    <dimen name="text_18">18dp</dimen>
+    <dimen name="text_20">20dp</dimen>
+    <dimen name="text_22">22dp</dimen>
+    <dimen name="text_26">26dp</dimen>
+    <dimen name="text_30">30dp</dimen>
+    <dimen name="text_40">40dp</dimen>
 </resources>
