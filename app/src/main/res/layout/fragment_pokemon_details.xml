@@ -16,113 +16,142 @@
             type="com.izzatismail.pokepal.model.response.SinglePokemonResponse" />
     </data>
 
-    <carbon.widget.LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical"
-        app:carbon_cornerRadius="@dimen/card_corner_radius"
-        app:carbon_elevation="@dimen/card_elevation">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/ivPokemonItemImage"
-                android:layout_width="@dimen/zero"
-                android:layout_height="@dimen/pokemon_detail_image_height"
-                android:contentDescription="@null"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                bind:imageUrl="@{pokemon.getPicUrl}" />
-
-            <TextView
-                android:id="@+id/tvPokemonItemTitle"
-                android:layout_width="@dimen/zero"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingTop="@dimen/space_16"
-                android:paddingBottom="@dimen/space_16"
-                android:text="@{pokemon.name}"
-                android:textAppearance="?attr/textAppearanceListItem"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivPokemonItemImage"
-                tools:text="Pikachu" />
-
-            <TextView
-                android:id="@+id/tvPokemonHeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingStart="@dimen/space_16"
-                android:paddingTop="@dimen/space_16"
-                android:paddingEnd="@dimen/space_16"
-                android:paddingBottom="@dimen/space_16"
-                android:text="@{data.formattedHeight}"
-                android:textAppearance="?attr/textAppearanceListItem"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPokemonItemTitle"
-                tools:text="1.0 kgs" />
-
-            <TextView
-                android:id="@+id/tvPokemonWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingStart="@dimen/space_16"
-                android:paddingTop="@dimen/space_16"
-                android:paddingEnd="@dimen/space_16"
-                android:paddingBottom="@dimen/space_16"
-                android:text="@{data.formattedWeight}"
-                android:textAppearance="?attr/textAppearanceListItem"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPokemonItemTitle"
-                tools:text="6.9 meters" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
+        <carbon.widget.LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_32"
-            android:layout_marginBottom="@dimen/space_32"
+            android:background="@color/white"
             android:orientation="vertical"
-            android:gravity="center"
-            android:paddingStart="@dimen/space_16"
-            android:paddingEnd="@dimen/space_16">
+            app:carbon_cornerRadius="@dimen/card_corner_radius"
+            app:carbon_elevation="@dimen/card_elevation">
 
-            <Button
-                android:id="@+id/btnAddFavourite"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivPokemonItemImage"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="@dimen/pokemon_detail_image_height"
+                    android:contentDescription="@null"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:imageUrl="@{pokemon.getPicUrl}" />
+
+                <TextView
+                    android:id="@+id/tvPokemonItemTitle"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/space_16"
+                    android:paddingBottom="@dimen/space_16"
+                    android:text="@{pokemon.name}"
+                    android:textAppearance="?attr/textAppearanceListItem"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivPokemonItemImage"
+                    tools:text="Pikachu" />
+
+                <TextView
+                    android:id="@+id/tvPokemonHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/space_16"
+                    android:paddingTop="@dimen/space_16"
+                    android:paddingEnd="@dimen/space_16"
+                    android:paddingBottom="@dimen/space_16"
+                    android:text="@{data.formattedHeight}"
+                    android:textAppearance="?attr/textAppearanceListItem"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPokemonItemTitle"
+                    tools:text="1.0 kgs" />
+
+                <TextView
+                    android:id="@+id/tvPokemonWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/space_16"
+                    android:paddingTop="@dimen/space_16"
+                    android:paddingEnd="@dimen/space_16"
+                    android:paddingBottom="@dimen/space_16"
+                    android:text="@{data.formattedWeight}"
+                    android:textAppearance="?attr/textAppearanceListItem"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPokemonItemTitle"
+                    tools:text="6.9 meters" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_text_rounded"
-                android:text="@string/label_add_favourite"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_14"
-                app:backgroundTint="@color/colorPrimaryDark" />
+                android:gravity="center_horizontal"
+                android:paddingTop="@dimen/space_16"
+                android:paddingBottom="@dimen/space_16"
+                android:text="Base Stats"
+                android:textAppearance="?attr/textAppearanceListItem" />
 
-            <Button
-                android:id="@+id/btnDone"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatsList"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_8"
-                android:background="@drawable/bg_text_rounded_outline"
-                android:text="@string/label_done"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_14"
-                app:backgroundTint="@color/white" />
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/card_side_margin"
+                android:paddingTop="@dimen/card_side_margin"
+                android:paddingEnd="@dimen/card_side_margin"
+                android:paddingBottom="@dimen/card_side_margin"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/view_list_item_stats" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_48"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="@dimen/space_16"
+                android:paddingEnd="@dimen/space_16">
 
-    </carbon.widget.LinearLayout>
+                <Button
+                    android:id="@+id/btnAddFavourite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text_rounded"
+                    android:text="@string/label_add_favourite"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_14"
+                    app:backgroundTint="@color/colorPrimaryDark" />
+
+                <Button
+                    android:id="@+id/btnDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:background="@drawable/bg_text_rounded_outline"
+                    android:text="@string/label_done"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_14"
+                    app:backgroundTint="@color/white" />
+
+            </LinearLayout>
+
+        </carbon.widget.LinearLayout>
+
+    </ScrollView>
+
+
 
 </layout>

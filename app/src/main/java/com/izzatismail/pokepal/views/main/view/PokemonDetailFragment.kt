@@ -10,6 +10,7 @@ import com.izzatismail.pokepal.R
 import com.izzatismail.pokepal.databinding.FragmentPokemonDetailsBinding
 import com.izzatismail.pokepal.model.PokemonResult
 import com.izzatismail.pokepal.model.response.SinglePokemonResponse
+import com.izzatismail.pokepal.views.main.adapters.PokemonStatsListAdapter
 
 class PokemonDetailFragment: DialogFragment() {
 
@@ -17,6 +18,7 @@ class PokemonDetailFragment: DialogFragment() {
     private var mPokemonResult: PokemonResult = PokemonResult(name = "", url = "")
     private var mListener: OnClickListener? = null
     private var mSinglePokemonResult: SinglePokemonResponse? = null
+    private var mAdapter: PokemonStatsListAdapter? = null
 
     companion object {
         fun newInstance(pokemonResult: PokemonResult, singlePokemonResponse: SinglePokemonResponse, listener: OnClickListener): PokemonDetailFragment {
@@ -58,6 +60,11 @@ class PokemonDetailFragment: DialogFragment() {
         }
         mBinding.btnDone.setOnClickListener { //Todo for future improvement, move this to XML
             mListener?.onDoneClick()
+        }
+
+        mSinglePokemonResult?.let { singlePokemonResponse ->
+            mAdapter = PokemonStatsListAdapter(statsList = singlePokemonResponse.stats)
+            mBinding.rvStatsList.adapter = mAdapter
         }
     }
 
