@@ -7,4 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Stat(
     val name: String,
     val url: String
-) : Parcelable
+) : Parcelable {
+    fun getFormattedStatName(): String {
+        return name.capitalize()
+    }
+}

@@ -35,4 +35,8 @@ abstract class BaseActivity: AppCompatActivity() {
 
         actionBar?.customView?.findViewById<ImageView>(R.id.ivBack)?.visibility = if (showBackButton) View.VISIBLE else View.GONE
     }
+
+    fun hideActionBar() {
+        supportActionBar?.hide()
+    }
 }

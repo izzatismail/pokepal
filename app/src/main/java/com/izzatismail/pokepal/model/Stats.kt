@@ -8,4 +8,8 @@ data class Stats(
     val base_stat: Int,
     val effort: Int,
     val stat: Stat
-) : Parcelable
+) : Parcelable {
+    fun getBaseStatString(): String {
+        return base_stat.toString()
+    }
+}
