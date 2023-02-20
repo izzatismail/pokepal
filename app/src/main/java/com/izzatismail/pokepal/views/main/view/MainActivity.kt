@@ -7,7 +7,10 @@ import androidx.lifecycle.lifecycleScope
 import com.izzatismail.pokepal.R
 import com.izzatismail.pokepal.base.BaseActivity
 import com.izzatismail.pokepal.databinding.ActivityMainBinding
+import com.izzatismail.pokepal.model.PokemonResult
+import com.izzatismail.pokepal.model.response.SinglePokemonResponse
 import com.izzatismail.pokepal.utils.Utils
+import com.izzatismail.pokepal.utils.showDialogFragment
 import com.izzatismail.pokepal.views.main.adapters.PokemonListAdapter
 import com.izzatismail.pokepal.views.main.adapters.PokemonListListener
 import com.izzatismail.pokepal.views.main.uistate.MainUIState
@@ -38,13 +41,15 @@ class MainActivity : BaseActivity() {
                         mBinding.pbProgressBar.visibility = if (uiState.isLoading) View.VISIBLE else View.GONE
                     }
                     is MainUIState.SuccessResponse -> {
-                        mAdapter = PokemonListAdapter(context = this@MainActivity, pokemonList = uiState.response.results, listener =  object: PokemonListListener {
-                            override fun onClick(id: Int) {
-                                //TODO Navigate to Details Page
-                                Utils.showToastMessage(context = this@MainActivity, id.toString())
+                        mAdapter = PokemonListAdapter(pokemonList = uiState.response.results, listener =  object: PokemonListListener {
+                            override fun onClick(pokemonResult: PokemonResult) {
+                                mViewModel.getSinglePokemonData(pokemonResult = pokemonResult)
                             }
                         })
                         mBinding.rvPokemonList.adapter = mAdapter
+                    }
+                    is MainUIState.SinglePokemonSuccessResponse -> {
+                        showPokemonDetailsFragment(pokemonResult = uiState.selectedPokemon, singlePokemonResponse = uiState.response)
                     }
                     is MainUIState.ShowError -> {
                         Utils.showToastMessage(context = this@MainActivity, uiState.message)
@@ -55,5 +60,34 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
+    }
+
+    private fun showPokemonDetailsFragment(pokemonResult: PokemonResult, singlePokemonResponse: SinglePokemonResponse) {
+        var frag: PokemonDetailFragment? = null
+        frag = PokemonDetailFragment.newInstance(
+            pokemonResult = pokemonResult,
+            singlePokemonResponse = singlePokemonResponse,
+            listener = object : PokemonDetailFragment.OnClickListener {
+                override fun onDoneClick() {
+                    frag?.let {
+                        if (it.isAdded && it.isVisible) {
+                            it.dismissAllowingStateLoss()
+                        }
+                    }
+                }
+
+                override fun onAddToFavouriteClick() {
+                    frag?.let {
+                        if (it.isAdded && it.isVisible) {
+                            it.dismissAllowingStateLoss()
+                        }
+                    }
+
+                    // TODO handle AddToFavourite
+                    Utils.showToastMessage(context = this@MainActivity, "Add To Favourite clicked")
+                }
+            }
+        )
+        this.showDialogFragment(dialogFragment = frag)
     }
 }

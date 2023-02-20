@@ -3,12 +3,13 @@
 <resources>
     <dimen name="zero">0dp</dimen>
     <dimen name="one">1dp</dimen>
+    <dimen name="space_8">8dp</dimen>
     <dimen name="space_16">16dp</dimen>
     <dimen name="space_24">24dp</dimen>
     <dimen name="space_32">32dp</dimen>
-    <dimen name="space_8">8dp</dimen>
 
     <dimen name="pokemon_image_height">100dp</dimen>
+    <dimen name="pokemon_detail_image_height">200dp</dimen>
     <dimen name="card_side_margin">10dp</dimen>
     <dimen name="card_bottom_margin">@dimen/space_24</dimen>
     <dimen name="card_elevation">4dp</dimen>

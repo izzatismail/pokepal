@@ -6,12 +6,13 @@
     tools:context=".views.main.view.MainActivity">
 
     <data>
+
         <variable
             name="pokemon"
             type="com.izzatismail.pokepal.model.PokemonResult" />
 
         <variable
-            name="stats"
+            name="data"
             type="com.izzatismail.pokepal.model.response.SinglePokemonResponse" />
     </data>
 
@@ -30,13 +31,13 @@
             <ImageView
                 android:id="@+id/ivPokemonItemImage"
                 android:layout_width="@dimen/zero"
-                android:layout_height="@dimen/pokemon_image_height"
+                android:layout_height="@dimen/pokemon_detail_image_height"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                bind:imageUrl="@{pokemon.getPicUrl}"/>
+                bind:imageUrl="@{pokemon.getPicUrl}" />
 
             <TextView
                 android:id="@+id/tvPokemonItemTitle"
@@ -45,9 +46,8 @@
                 android:gravity="center_horizontal"
                 android:paddingTop="@dimen/space_16"
                 android:paddingBottom="@dimen/space_16"
-                android:textAppearance="?attr/textAppearanceListItem"
                 android:text="@{pokemon.name}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAppearance="?attr/textAppearanceListItem"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ivPokemonItemImage"
@@ -58,12 +58,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:paddingTop="@dimen/space_16"
-                android:paddingBottom="@dimen/space_16"
                 android:paddingStart="@dimen/space_16"
+                android:paddingTop="@dimen/space_16"
                 android:paddingEnd="@dimen/space_16"
+                android:paddingBottom="@dimen/space_16"
+                android:text="@{data.formattedHeight}"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:text="@{stats.formattedHeight}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPokemonItemTitle"
@@ -74,17 +74,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:paddingTop="@dimen/space_16"
-                android:paddingBottom="@dimen/space_16"
                 android:paddingStart="@dimen/space_16"
+                android:paddingTop="@dimen/space_16"
                 android:paddingEnd="@dimen/space_16"
+                android:paddingBottom="@dimen/space_16"
+                android:text="@{data.formattedWeight}"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:text="@{stats.formattedWeight}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPokemonItemTitle"
                 tools:text="6.9 meters" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -92,36 +91,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/space_32"
-            android:paddingStart="@dimen/space_16"
-            android:paddingEnd="@dimen/space_16"
             android:layout_marginBottom="@dimen/space_32"
-            android:weightSum="100">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16">
 
             <Button
                 android:id="@+id/btnAddFavourite"
-                android:layout_width="@dimen/zero"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_8"
-                android:layout_weight="50"
-                android:background="@drawable/bg_text_rounded_outline"
+                android:background="@drawable/bg_text_rounded"
                 android:text="@string/label_add_favourite"
                 android:textAllCaps="false"
-                android:textColor="@color/carbon_green_500"
-                android:textSize="@dimen/text_14" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_14"
+                app:backgroundTint="@color/colorPrimaryDark" />
 
             <Button
                 android:id="@+id/btnDone"
-                android:layout_width="@dimen/zero"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_8"
-                android:layout_weight="50"
-                android:background="@drawable/bg_text_rounded"
+                android:layout_marginTop="@dimen/space_8"
+                android:background="@drawable/bg_text_rounded_outline"
                 android:text="@string/label_done"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_14" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_14"
+                app:backgroundTint="@color/white" />
 
         </LinearLayout>
 
