@@ -29,7 +29,8 @@ class MainActivity : BaseActivity() {
         mBinding.executePendingBindings()
         hideActionBar()
         initViewModel()
-        mViewModel.getPokemons(limit = null, offset = null)
+        initListeners()
+        mViewModel.getPokemons(limit = null, offset = null) //TODO handle limit & offset dynamically based on pagination
     }
 
     private fun initViewModel() {
@@ -41,6 +42,7 @@ class MainActivity : BaseActivity() {
                         mBinding.pbProgressBar.visibility = if (uiState.isLoading) View.VISIBLE else View.GONE
                     }
                     is MainUIState.SuccessResponse -> {
+                        mBinding.swipeRefreshRoot.isRefreshing = false
                         mAdapter = PokemonListAdapter(pokemonList = uiState.response.results, listener =  object: PokemonListListener {
                             override fun onClick(pokemonResult: PokemonResult) {
                                 mViewModel.getSinglePokemonData(pokemonResult = pokemonResult)
@@ -59,6 +61,12 @@ class MainActivity : BaseActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun initListeners() {
+        mBinding.swipeRefreshRoot.setOnRefreshListener {
+            mViewModel.getPokemons(limit = null, offset = null) //TODO handle limit & offset dynamically based on pagination
         }
     }
 
