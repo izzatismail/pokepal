@@ -3,4 +3,5 @@
     <string name="label_favourite">Favourite</string>
     <string name="label_done">Done</string>
     <string name="label_add_favourite">Add To Favourite</string>
+    <string name="label_no_favourite_pokemon_yet">No Favourite Pokemon yet</string>
 </resources>
