@@ -11,6 +11,7 @@ import com.izzatismail.pokepal.model.PokemonResult
 import com.izzatismail.pokepal.model.response.SinglePokemonResponse
 import com.izzatismail.pokepal.utils.Utils
 import com.izzatismail.pokepal.utils.showDialogFragment
+import com.izzatismail.pokepal.views.favourites.view.FavouritesActivity
 import com.izzatismail.pokepal.views.main.adapters.PokemonListAdapter
 import com.izzatismail.pokepal.views.main.adapters.PokemonListListener
 import com.izzatismail.pokepal.views.main.uistate.MainUIState
@@ -68,6 +69,10 @@ class MainActivity : BaseActivity() {
         mBinding.swipeRefreshRoot.setOnRefreshListener {
             mViewModel.getPokemons(limit = null, offset = null) //TODO handle limit & offset dynamically based on pagination
         }
+
+        mBinding.fabFavourite.setOnClickListener {
+            FavouritesActivity.startActivity(context = this@MainActivity)
+        }
     }
 
     private fun showPokemonDetailsFragment(pokemonResult: PokemonResult, singlePokemonResponse: SinglePokemonResponse) {
@@ -84,14 +89,14 @@ class MainActivity : BaseActivity() {
                     }
                 }
 
-                override fun onAddToFavouriteClick() {
+                override fun onAddToFavouriteClick(pokemonResult: PokemonResult, singlePokemonResponse: SinglePokemonResponse) {
                     frag?.let {
                         if (it.isAdded && it.isVisible) {
                             it.dismissAllowingStateLoss()
                         }
                     }
 
-                    // TODO handle AddToFavourite
+                    mViewModel.addPokemonToFavourite(pokemonResult = pokemonResult, singlePokemonResponse = singlePokemonResponse)
                     Utils.showToastMessage(context = this@MainActivity, "Add To Favourite clicked")
                 }
             }

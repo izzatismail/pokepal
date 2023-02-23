@@ -18,10 +18,10 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     //Main Pokemon VM
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
 
     //Favourite Pokemons VM
-    viewModel { FavouritesViewModel(get()) }
+    viewModel { FavouritesViewModel(get(), get()) }
 }
 
 val allModules = listOf(

@@ -56,7 +56,7 @@ class PokemonDetailFragment: DialogFragment() {
         mBinding.pokemon = mPokemonResult
         mBinding.data = mSinglePokemonResult
         mBinding.btnAddFavourite.setOnClickListener { //Todo for future improvement, move this to XML
-            mListener?.onAddToFavouriteClick()
+            mListener?.onAddToFavouriteClick(pokemonResult = mPokemonResult, singlePokemonResponse = mSinglePokemonResult!!)
         }
         mBinding.btnDone.setOnClickListener { //Todo for future improvement, move this to XML
             mListener?.onDoneClick()
@@ -70,6 +70,6 @@ class PokemonDetailFragment: DialogFragment() {
 
     interface OnClickListener {
         fun onDoneClick()
-        fun onAddToFavouriteClick()
+        fun onAddToFavouriteClick(pokemonResult: PokemonResult, singlePokemonResponse: SinglePokemonResponse)
     }
 }

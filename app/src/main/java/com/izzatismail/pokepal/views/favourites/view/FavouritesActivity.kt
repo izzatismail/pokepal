@@ -1,7 +1,8 @@
 package com.izzatismail.pokepal.views.favourites.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.izzatismail.pokepal.R
@@ -19,13 +20,21 @@ import com.izzatismail.pokepal.views.main.view.PokemonDetailFragment
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class FavouritesActivity: BaseActivity() {
+
+    companion object {
+        fun startActivity(context: Context) {
+            val intent = Intent(context, FavouritesActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
+
     private lateinit var mBinding: ActivityFavouritesBinding
     private lateinit var mViewModel: FavouritesViewModel
 
     private var mAdapter: PokemonListAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_favourites)
         mBinding.executePendingBindings()
         hideActionBar()
         initViewModel()
@@ -37,18 +46,15 @@ class FavouritesActivity: BaseActivity() {
         lifecycleScope.launchWhenStarted {
             mViewModel.uiState.collect { uiState ->
                 when (uiState) {
-                    is FavouritesUIState.IsLoading -> {
-                        mBinding.pbProgressBar.visibility = if (uiState.isLoading) View.VISIBLE else View.GONE
+                    is FavouritesUIState.ShowFavouritePokemonList -> {
+                        mAdapter = PokemonListAdapter(pokemonList = uiState.list, listener =  object:
+                            PokemonListListener {
+                            override fun onClick(pokemonResult: PokemonResult) {
+                                mViewModel.getSinglePokemonData(pokemonResult = pokemonResult)
+                            }
+                        })
+                        mBinding.rvPokemonList.adapter = mAdapter
                     }
-//                    is FavouritesUIState.SuccessResponse -> {
-//                        mAdapter = PokemonListAdapter(pokemonList = uiState.response.results, listener =  object:
-//                            PokemonListListener {
-//                            override fun onClick(pokemonResult: PokemonResult) {
-//                                mViewModel.getSinglePokemonData(pokemonResult = pokemonResult)
-//                            }
-//                        })
-//                        mBinding.rvPokemonList.adapter = mAdapter
-//                    }
                     is FavouritesUIState.ShowError -> {
                         Utils.showToastMessage(context = this@FavouritesActivity, uiState.message)
                     }
@@ -74,7 +80,7 @@ class FavouritesActivity: BaseActivity() {
                     }
                 }
 
-                override fun onAddToFavouriteClick() {
+                override fun onAddToFavouriteClick(pokemonResult: PokemonResult, singlePokemonResponse: SinglePokemonResponse) {
                     frag?.let {
                         if (it.isAdded && it.isVisible) {
                             it.dismissAllowingStateLoss()
